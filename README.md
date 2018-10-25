@@ -9,7 +9,7 @@ Original publication: <a href="https://infostart.ru/public/143405/" target="_bla
 <p>Дополнительно для 1С:Документооборот:<br>1) Просмотр и корректировка приложенных к "Внутреннему документу" и "Исходящему документу" файлов.<br>2) Создание процесса "Поручение" на основании любого письма с возможностью передать в 1С вложенные в письмо файлы.</p>
 <p>Дополнительно для 1С:Консолидация ПРОФ:<br>1) Просмотр печатных форм "Заявки на расходование средств" и "Экземляра отчета"</p>
 <p>Для работы надстроек требуется внесение изменений в в конфигурации 1С и публикация web-сервисов (интеграция с 1С выполняется через веб-сервисы, что обеспечивает очень высокую скорость работы). Установить веб-сервер и опубликовать web-сервисы достаточно просто и не требует дополнительных затрат на лицензии.</p>
-<p><strong>Для работы надстроек требуется установленный NET Framework 4.0.</strong> Загрузить его можно бесплатно <span style="text-decoration: underline;"><a href="/redirect.php?url=aHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3J1LXJ1L2Rvd25sb2FkL2RldGFpbHMuYXNweD9pZD0xNzcxOA==">здесь</a></span>.</p>
+<p><strong>Для работы надстроек требуется установленный NET Framework 4.0.</strong> Загрузить его можно бесплатно <span style="text-decoration: underline;"><a href="https://www.microsoft.com/ru-ru/download/details.aspx?id=17718">здесь</a></span>.</p>
 <p>Установка надстройки выполняется <span style="text-decoration: underline;">без административных прав пользователем самостоятельно</span>.<br>Следует учесть, что надстройки устанавливаются из того каталога, из которого они были запущены, поэтому необходимо сразу копировать каталоги с надстройками на постоянное место (например, в "Мои документы")</p>
 <p>После установки надстроек требуется указать местоположение 1С - адрес веб-сервиса, а также параметры доступа к нему - доменная авторизация, либо по обычному логину и паролю. <span style="text-decoration: underline;">Это нужно сделать отдельно для каждой из надстроек.</span></p>
 <p><span style="text-decoration: underline; color: #0000ff;"><strong>Обновление от 01.09.2012</strong></span><br><span style="color: #0000ff;">1) для надстройки разрешена работа по http-протоколу</span><br><span style="color: #0000ff;">2) приложен новый cfu-файл с изменениями для релиза 1С:Документооборот КОРП 1.2.5.3 (updateDoc8_1.2.5.3.cfu)</span></p>
@@ -18,15 +18,14 @@ Original publication: <a href="https://infostart.ru/public/143405/" target="_bla
 <p>&nbsp;</p>
 <h2><strong>Настройки на сервере:</strong></h2>
 <p>1) внести в конфигурацию необходимые доработки из cfu-файла обновления<br>2) опубликовать на веб-сервере веб-сервис "ALP_OutlookServices"<br>3) Если для пользователей будет использоваться обычная авторизация, а не доменная, то для пользователей, которые будут работать через надстройку, необходимо изменить имя пользователя в конфигураторе на латиницу. <strong>С кириллитическим именем авторизоваться на веб-сервисе пользователи не смогут!</strong></p>
-<p>&nbsp;<img src="//infostart.ru/upload/iblock/b34/1.png" alt="" width="367" height="316"></p>
 <p><img style="border: 1px solid black;" src="https://github.com/alekseybochkov/outlook-addin-for-1c-enterprise/blob/readme/pics/1.png?raw=true" alt=""/></p>
 <p>&nbsp;</p>
 <h2>Настройка на клиентской рабочей станции:</h2>
 <p>1) Распаковать дистрибутив с надстройкой, например, в "Мои документы" на компьютере пользователя.<br>2) Запустить файл setup.exe и подтвердить установку надстройки:</p>
-<p>&nbsp;<img src="//infostart.ru/upload/iblock/c4b/2.png" alt="" width="586" height="311"></p>
-<p><img src="//infostart.ru/upload/iblock/026/3.png" alt="" width="586" height="221"></p>
+<p><img style="border: 1px solid black;" src="https://github.com/alekseybochkov/outlook-addin-for-1c-enterprise/blob/readme/pics/2.png?raw=true" alt=""/></p>
+<p><img style="border: 1px solid black;" src="https://github.com/alekseybochkov/outlook-addin-for-1c-enterprise/blob/readme/pics/3.png?raw=true" alt=""/></p>
 <p>3) запустить Outlook, открыть любое входящее письмо, перейти на соответствующую закладку (для 1С:Консолидации или 1С:Документооборота) и нажать кнопку "Настройка параметров соединения"</p>
-<p><img src="//infostart.ru/upload/iblock/c39/%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0.png" alt="" width="482" height="184"></p>
+<p><img style="border: 1px solid black;" src="https://github.com/alekseybochkov/outlook-addin-for-1c-enterprise/blob/readme/pics/%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0.png?raw=true" alt=""/></p>
 <p>4) заполнить адрес web-сервиса, способ аутентификации и логин/пароль (<strong>пароль хранится в реестре Windows в открытом виде!</strong>)</p>
 <p><img src="//infostart.ru/upload/iblock/e4c/5.png" alt="" width="391" height="226"></p>
 <p>5) нажать "ОК", при этом система проверит подключение к web-сервису. При возникновении ошибки выдаст предупреждение, в случае успеха - тихо закроется.</p>
