@@ -19,7 +19,7 @@ Original publication: <a href="https://infostart.ru/public/143405/" target="_bla
 <h2><strong>Настройки на сервере:</strong></h2>
 <p>1) внести в конфигурацию необходимые доработки из cfu-файла обновления<br>2) опубликовать на веб-сервере веб-сервис "ALP_OutlookServices"<br>3) Если для пользователей будет использоваться обычная авторизация, а не доменная, то для пользователей, которые будут работать через надстройку, необходимо изменить имя пользователя в конфигураторе на латиницу. <strong>С кириллитическим именем авторизоваться на веб-сервисе пользователи не смогут!</strong></p>
 <p>&nbsp;<img src="//infostart.ru/upload/iblock/b34/1.png" alt="" width="367" height="316"></p>
-<p><img style="border: 1px solid black;" src="https://github.com/alekseybochkov/outlook-addin-for-1c-enterprise/blob/readme/outlook-addin-for-1c-enterprise/1.png?raw=true" alt=""/></p>
+<p><img style="border: 1px solid black;" src="https://github.com/alekseybochkov/outlook-addin-for-1c-enterprise/blob/readme/pics/1.png?raw=true" alt=""/></p>
 <p>&nbsp;</p>
 <h2>Настройка на клиентской рабочей станции:</h2>
 <p>1) Распаковать дистрибутив с надстройкой, например, в "Мои документы" на компьютере пользователя.<br>2) Запустить файл setup.exe и подтвердить установку надстройки:</p>
