@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd1="http://www.alp.ru/consolid/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.alp.ru/consolid/" name="ALP_OutlookServices" targetNamespace="http://www.alp.ru/consolid/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:xs1="http://www.alp.ru/consolid/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.alp.ru/consolid/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayAttachments">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="9999" name="Data" nillable="true" type="xs1:BinaryFile" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BinaryFile">
+        <xs:sequence>
+          <xs:element name="FileName" type="xs:string" />
+          <xs:element minOccurs="0" name="FileExtension" nillable="true" type="xs:string" />
+          <xs:element name="FileDataSize" nillable="true" type="xs:integer" />
+          <xs:element name="FileDateModified" nillable="true" type="xs:string" />
+          <xs:element name="FileData" nillable="true" type="xs:base64Binary" />
+          <xs:element name="FileCustomText" nillable="true" type="xs:string" />
+          <xs:element name="FileLockedCurrentUser" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Process">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DetailText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ArrayAttachment" nillable="true" type="xs1:ArrayAttachments" />
+          <xs:element minOccurs="0" name="TaskFor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DeadLine" nillable="true" type="xs:string" />
+          <xs:element name="Importance" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponceAttachments">
+        <xs:sequence>
+          <xs:element name="Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="9999" name="Data" nillable="true" type="xs1:BinaryFile" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponceCreateProcess">
+        <xs:sequence>
+          <xs:element name="Text" nillable="true" type="xs:string" />
+          <xs:element name="Status" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponceHistory">
+        <xs:sequence>
+          <xs:element name="Text" nillable="true" type="xs:string" />
+          <xs:element name="Data1" nillable="true" type="xs:base64Binary" />
+          <xs:element name="Data2" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="User">
+        <xs:sequence>
+          <xs:element name="Name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UserList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="999" name="Users" nillable="true" type="xs1:User" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TestConnection">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestConnectionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutAgreement">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+            <xs:element name="Text" type="xs:string" />
+            <xs:element name="DocType" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutAgreementResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutCancel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+            <xs:element name="Text" type="xs:string" />
+            <xs:element name="DocType" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutCancelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInfoAboutDocument">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+            <xs:element name="DocType" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetInfoAboutDocumentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ResponceHistory" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="TestConnectionRequestMessage">
+    <part name="parameters" element="tns:TestConnection" />
+  </message>
+  <message name="TestConnectionResponseMessage">
+    <part name="parameters" element="tns:TestConnectionResponse" />
+  </message>
+  <message name="PutAgreementRequestMessage">
+    <part name="parameters" element="tns:PutAgreement" />
+  </message>
+  <message name="PutAgreementResponseMessage">
+    <part name="parameters" element="tns:PutAgreementResponse" />
+  </message>
+  <message name="PutCancelRequestMessage">
+    <part name="parameters" element="tns:PutCancel" />
+  </message>
+  <message name="PutCancelResponseMessage">
+    <part name="parameters" element="tns:PutCancelResponse" />
+  </message>
+  <message name="GetInfoAboutDocumentRequestMessage">
+    <part name="parameters" element="tns:GetInfoAboutDocument" />
+  </message>
+  <message name="GetInfoAboutDocumentResponseMessage">
+    <part name="parameters" element="tns:GetInfoAboutDocumentResponse" />
+  </message>
+  <portType name="ALP_OutlookServicesPortType">
+    <operation name="TestConnection">
+      <input message="tns:TestConnectionRequestMessage" />
+      <output message="tns:TestConnectionResponseMessage" />
+    </operation>
+    <operation name="PutAgreement">
+      <input message="tns:PutAgreementRequestMessage" />
+      <output message="tns:PutAgreementResponseMessage" />
+    </operation>
+    <operation name="PutCancel">
+      <input message="tns:PutCancelRequestMessage" />
+      <output message="tns:PutCancelResponseMessage" />
+    </operation>
+    <operation name="GetInfoAboutDocument">
+      <input message="tns:GetInfoAboutDocumentRequestMessage" />
+      <output message="tns:GetInfoAboutDocumentResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="ALP_OutlookServicesSoapBinding" type="tns:ALP_OutlookServicesPortType">
+    <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="TestConnection">
+      <soapbind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:TestConnection" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutAgreement">
+      <soapbind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:PutAgreement" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutCancel">
+      <soapbind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:PutCancel" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInfoAboutDocument">
+      <soapbind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:GetInfoAboutDocument" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ALP_OutlookServicesSoap12Binding" type="tns:ALP_OutlookServicesPortType">
+    <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="TestConnection">
+      <soap12bind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:TestConnection" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutAgreement">
+      <soap12bind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:PutAgreement" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutCancel">
+      <soap12bind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:PutCancel" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetInfoAboutDocument">
+      <soap12bind:operation soapAction="http://www.alp.ru/consolid/#ALP_OutlookServices:GetInfoAboutDocument" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ALP_OutlookServices">
+    <port name="ALP_OutlookServicesSoap" binding="tns:ALP_OutlookServicesSoapBinding">
+      <documentation>
+        <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+      </documentation>
+      <soapbind:address location="http://srv1007/bdkstest/outlookCons.1cws" />
+    </port>
+    <port name="ALP_OutlookServicesSoap12" binding="tns:ALP_OutlookServicesSoap12Binding">
+      <soap12bind:address location="http://srv1007/bdkstest/outlookCons.1cws" />
+    </port>
+  </service>
+</definitions>

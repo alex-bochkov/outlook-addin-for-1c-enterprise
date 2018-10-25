@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd1="http://www.alp.ru/bdks/" xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.alp.ru/bdks/" name="ALP_OutlookServices" targetNamespace="http://www.alp.ru/bdks/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:xs1="http://www.alp.ru/bdks/" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.alp.ru/bdks/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayAttachments">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="9999" name="Data" nillable="true" type="xs1:BinaryFile" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BinaryFile">
+        <xs:sequence>
+          <xs:element name="FileName" type="xs:string" />
+          <xs:element minOccurs="0" name="FileExtension" nillable="true" type="xs:string" />
+          <xs:element name="FileDataSize" nillable="true" type="xs:integer" />
+          <xs:element name="FileDateModified" nillable="true" type="xs:string" />
+          <xs:element name="FileData" nillable="true" type="xs:base64Binary" />
+          <xs:element name="FileCustomText" nillable="true" type="xs:string" />
+          <xs:element name="FileLockedCurrentUser" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Process">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DetailText" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ArrayAttachment" nillable="true" type="xs1:ArrayAttachments" />
+          <xs:element minOccurs="0" name="TaskFor" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DeadLine" nillable="true" type="xs:string" />
+          <xs:element name="Importance" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponceAttachments">
+        <xs:sequence>
+          <xs:element name="Text" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="9999" name="Data" nillable="true" type="xs1:BinaryFile" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponceCreateProcess">
+        <xs:sequence>
+          <xs:element name="Text" nillable="true" type="xs:string" />
+          <xs:element name="Status" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ResponceHistory">
+        <xs:sequence>
+          <xs:element name="Text" nillable="true" type="xs:string" />
+          <xs:element name="Data" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="User">
+        <xs:sequence>
+          <xs:element name="Name" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="UserList">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="999" name="Users" nillable="true" type="xs1:User" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetProcessHistory">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetProcessHistoryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ResponceHistory" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAttachmentFromBisnessProcess">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAttachmentFromBisnessProcessResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ResponceAttachments" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReturnAttachmentToBisnessProcess">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+            <xs:element name="ArrayAttachments" type="xs1:ArrayAttachments" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReturnAttachmentToBisnessProcessResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutAgreement">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+            <xs:element name="Text" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutAgreementResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutCancel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+            <xs:element name="Text" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PutCancelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LockDocumentsInBisnessProcess">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="IDProcess" type="xs:string" />
+            <xs:element name="ArrayAttachments" type="xs1:ArrayAttachments" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LockDocumentsInBisnessProcessResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ResponceAttachments" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateProcess">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Process" type="xs1:Process" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateProcessResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:ResponceCreateProcess" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUserList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Name" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetUserListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs1:UserList" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestConnection">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestConnectionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </types>
+  <message name="GetProcessHistoryRequestMessage">
+    <part name="parameters" element="tns:GetProcessHistory" />
+  </message>
+  <message name="GetProcessHistoryResponseMessage">
+    <part name="parameters" element="tns:GetProcessHistoryResponse" />
+  </message>
+  <message name="GetAttachmentFromBisnessProcessRequestMessage">
+    <part name="parameters" element="tns:GetAttachmentFromBisnessProcess" />
+  </message>
+  <message name="GetAttachmentFromBisnessProcessResponseMessage">
+    <part name="parameters" element="tns:GetAttachmentFromBisnessProcessResponse" />
+  </message>
+  <message name="ReturnAttachmentToBisnessProcessRequestMessage">
+    <part name="parameters" element="tns:ReturnAttachmentToBisnessProcess" />
+  </message>
+  <message name="ReturnAttachmentToBisnessProcessResponseMessage">
+    <part name="parameters" element="tns:ReturnAttachmentToBisnessProcessResponse" />
+  </message>
+  <message name="PutAgreementRequestMessage">
+    <part name="parameters" element="tns:PutAgreement" />
+  </message>
+  <message name="PutAgreementResponseMessage">
+    <part name="parameters" element="tns:PutAgreementResponse" />
+  </message>
+  <message name="PutCancelRequestMessage">
+    <part name="parameters" element="tns:PutCancel" />
+  </message>
+  <message name="PutCancelResponseMessage">
+    <part name="parameters" element="tns:PutCancelResponse" />
+  </message>
+  <message name="LockDocumentsInBisnessProcessRequestMessage">
+    <part name="parameters" element="tns:LockDocumentsInBisnessProcess" />
+  </message>
+  <message name="LockDocumentsInBisnessProcessResponseMessage">
+    <part name="parameters" element="tns:LockDocumentsInBisnessProcessResponse" />
+  </message>
+  <message name="CreateProcessRequestMessage">
+    <part name="parameters" element="tns:CreateProcess" />
+  </message>
+  <message name="CreateProcessResponseMessage">
+    <part name="parameters" element="tns:CreateProcessResponse" />
+  </message>
+  <message name="GetUserListRequestMessage">
+    <part name="parameters" element="tns:GetUserList" />
+  </message>
+  <message name="GetUserListResponseMessage">
+    <part name="parameters" element="tns:GetUserListResponse" />
+  </message>
+  <message name="TestConnectionRequestMessage">
+    <part name="parameters" element="tns:TestConnection" />
+  </message>
+  <message name="TestConnectionResponseMessage">
+    <part name="parameters" element="tns:TestConnectionResponse" />
+  </message>
+  <portType name="ALP_OutlookServicesPortType">
+    <operation name="GetProcessHistory">
+      <input message="tns:GetProcessHistoryRequestMessage" />
+      <output message="tns:GetProcessHistoryResponseMessage" />
+    </operation>
+    <operation name="GetAttachmentFromBisnessProcess">
+      <input message="tns:GetAttachmentFromBisnessProcessRequestMessage" />
+      <output message="tns:GetAttachmentFromBisnessProcessResponseMessage" />
+    </operation>
+    <operation name="ReturnAttachmentToBisnessProcess">
+      <input message="tns:ReturnAttachmentToBisnessProcessRequestMessage" />
+      <output message="tns:ReturnAttachmentToBisnessProcessResponseMessage" />
+    </operation>
+    <operation name="PutAgreement">
+      <input message="tns:PutAgreementRequestMessage" />
+      <output message="tns:PutAgreementResponseMessage" />
+    </operation>
+    <operation name="PutCancel">
+      <input message="tns:PutCancelRequestMessage" />
+      <output message="tns:PutCancelResponseMessage" />
+    </operation>
+    <operation name="LockDocumentsInBisnessProcess">
+      <input message="tns:LockDocumentsInBisnessProcessRequestMessage" />
+      <output message="tns:LockDocumentsInBisnessProcessResponseMessage" />
+    </operation>
+    <operation name="CreateProcess">
+      <input message="tns:CreateProcessRequestMessage" />
+      <output message="tns:CreateProcessResponseMessage" />
+    </operation>
+    <operation name="GetUserList">
+      <input message="tns:GetUserListRequestMessage" />
+      <output message="tns:GetUserListResponseMessage" />
+    </operation>
+    <operation name="TestConnection">
+      <input message="tns:TestConnectionRequestMessage" />
+      <output message="tns:TestConnectionResponseMessage" />
+    </operation>
+  </portType>
+  <binding name="ALP_OutlookServicesSoapBinding" type="tns:ALP_OutlookServicesPortType">
+    <soapbind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetProcessHistory">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:GetProcessHistory" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAttachmentFromBisnessProcess">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:GetAttachmentFromBisnessProcess" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReturnAttachmentToBisnessProcess">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:ReturnAttachmentToBisnessProcess" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutAgreement">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:PutAgreement" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutCancel">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:PutCancel" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LockDocumentsInBisnessProcess">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:LockDocumentsInBisnessProcess" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateProcess">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:CreateProcess" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserList">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:GetUserList" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="TestConnection">
+      <soapbind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:TestConnection" style="document" />
+      <input>
+        <soapbind:body use="literal" />
+      </input>
+      <output>
+        <soapbind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ALP_OutlookServicesSoap12Binding" type="tns:ALP_OutlookServicesPortType">
+    <soap12bind:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetProcessHistory">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:GetProcessHistory" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAttachmentFromBisnessProcess">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:GetAttachmentFromBisnessProcess" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="ReturnAttachmentToBisnessProcess">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:ReturnAttachmentToBisnessProcess" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutAgreement">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:PutAgreement" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PutCancel">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:PutCancel" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="LockDocumentsInBisnessProcess">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:LockDocumentsInBisnessProcess" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CreateProcess">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:CreateProcess" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetUserList">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:GetUserList" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+    <operation name="TestConnection">
+      <soap12bind:operation soapAction="http://www.alp.ru/bdks/#ALP_OutlookServices:TestConnection" style="document" />
+      <input>
+        <soap12bind:body use="literal" />
+      </input>
+      <output>
+        <soap12bind:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ALP_OutlookServices">
+    <port name="ALP_OutlookServicesSoap" binding="tns:ALP_OutlookServicesSoapBinding">
+      <documentation>
+        <wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" conformsTo="http://ws-i.org/profiles/basic/1.1" />
+      </documentation>
+      <soapbind:address location="http://srv1007/bdkstest/outlook.1cws" />
+    </port>
+    <port name="ALP_OutlookServicesSoap12" binding="tns:ALP_OutlookServicesSoap12Binding">
+      <soap12bind:address location="http://srv1007/bdkstest/outlook.1cws" />
+    </port>
+  </service>
+</definitions>
